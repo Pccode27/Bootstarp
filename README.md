@@ -35,4 +35,14 @@ It includes sections like navigation, hero banner, features, and contact — all
 ---
 
 ## 📂 Folder Structure
-
+bootstrap-website/
+│
+├── index.html
+├── /assets
+│ ├── images/
+│ └── icons/
+├── /css
+│ └── styles.css (for any custom styles)
+├── /js
+│ └── main.js (if used)
+└── README.md
