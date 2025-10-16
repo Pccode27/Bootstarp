@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitZone Gym</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style2.css">
+  <style>
+    /* 🌈 Global Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #111;
+      color: #fff;
+    }
+
+    .navbar {
+      background: linear-gradient(90deg, #000, #111, #222);
+      transition: 0.3s;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      color: #ff4b2b !important;
+      letter-spacing: 1px;
+    }
+
+    .nav-link {
+      transition: 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #ff4b2b !important;
+      transform: scale(1.1);
+    }
+
+    /* 🏋️ Hero Section */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('./lifting.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(1.1); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .hero-section h1 {
+      font-size: 4rem;
+      font-weight: 700;
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .btn-gradient {
+      background: linear-gradient(45deg, #ff4b2b, #ff416c);
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn-gradient:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    }
+
+    /* 💪 Programs Section */
+   #programs .card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #d1a452, #f5d76e);
+  position: relative;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  cursor: pointer;
+}
+
+/* Glowing border effect on hover */
+#programs .card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b, #f5d76e, #d1a452);
+  background-size: 400% 400%;
+  border-radius: 17px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+  animation: glowGradient 8s ease infinite;
+}
+
+/* Card hover effect */
+#programs .card:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(255, 75, 43, 0.6);
+}
+
+#programs .card:hover::before {
+  opacity: 1;
+}
+
+/* Image inside card */
+#programs img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  border-bottom: 3px solid rgba(255,255,255,0.2);
+}
+
+/* Image hover zoom and brightness */
+#programs .card:hover img {
+  transform: scale(1.12) rotate(1deg);
+  filter: brightness(1.2);
+}
+
+/* Card body animation */
+#programs .card-body {
+  position: relative;
+  z-index: 1; /* So it’s above the glowing border */
+  transition: transform 0.5s ease;
+}
+
+#programs .card:hover .card-body {
+  transform: translateY(-5px);
+}
+
+/* Animated gradient glow keyframes */
+@keyframes glowGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Card title and text */
+#programs .card-title {
+  font-weight: 700;
+  color: #fff;
+}
+
+#programs .card-text {
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+#programs .card:hover .card-text {
+  color: #ffd700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #programs img { height: 200px; }
+}
+@media (max-width: 480px) {
+  #programs img { height: 180px; }
+  #programs .card-title { font-size: 1.2rem; }
+  #programs .card-text { font-size: 0.9rem; }
+}
+    /* 🧘 Trainers Section */
+ /* ====== TRAINERS SECTION ====== */
+#trainers {
+  background: #0e0e0e;
+  color: #fff;
+  padding: 80px 0;
+  text-align: center;
+}
+
+#trainers h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+}
+
+/* ✨ Color-changing underline */
+#trainers .underline {
+  width: 100px;
+  height: 5px;
+  margin: 0 auto 40px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #ff416c, #ff4b2b, #ffd452, #ff416c);
+  background-size: 300%;
+  animation: underlineColorShift 5s infinite alternate;
+}
+
+@keyframes underlineColorShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* ====== CARD BASE ====== */
+#trainers .card {
+  background: #1a1a1a;
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+
+/* Reveal Animation */
+#trainers .card.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for smooth sequential animation */
+#trainers .card:nth-child(1) { transition-delay: 0.1s; }
+#trainers .card:nth-child(2) { transition-delay: 0.25s; }
+#trainers .card:nth-child(3) { transition-delay: 0.4s; }
+
+/* ====== IMAGE ====== */
+#trainers .card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-bottom: 4px solid #ff4b2b;
+  transition: transform 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Hover glow + scale effect */
+#trainers .card:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+  box-shadow: 0 0 25px rgba(255, 75, 43, 0.6), 0 0 40px rgba(255, 212, 82, 0.3);
+}
+
+/* ====== CARD BODY ====== */
+#trainers .card-body {
+  padding: 25px 15px;
+}
+
+#trainers .card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffd452;
+}
+
+#trainers .card p {
+  color: #ccc;
+  margin-top: 5px;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+/* Hover Elevation Effect */
+#trainers .card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(255, 75, 43, 0.4);
+}
+
+
+#trainers .card-text {
+  font-size: 1rem;
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+/* Button */
+#trainers .btn-gradient {
+  background: linear-gradient(45deg, #ff512f, #dd2476);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  border: none;
+}
+#trainers .btn-gradient:hover {
+  background: linear-gradient(45deg, #dd2476, #ff512f);
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(255, 75, 43, 0.6);
+}
+
+/* Shared underline animation */
+@keyframes gradientSlide {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+    .pricing-card {
+      background: #fff;
+      color: #333;
+      border-radius: 15px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    /* 💬 Testimonials */
+    #testimonials {
+      background-color: #111;
+      color: #fff;
+      padding: 80px 0;
+    }
+
+    .testimonial {
+      background: #222;
+      border-radius: 15px;
+      padding: 30px;
+      transition: transform 0.4s ease;
+    }
+
+    .testimonial:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      color: #fff;
+    }
+
+    /* 📩 Contact Section */
+    #contact {
+      background: linear-gradient(180deg, #111, #1a1a1a);
+    }
+
+    /* ⚡ Footer */
+    footer {
+      background: linear-gradient(90deg, #ff4b2b, #ff416c);
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      font-weight: 500;
+    }
+
+    /* 🎬 Simple Scroll Animation */
+    .slide-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    .slide-up.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">🏋️ FitZone Gym</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#trainers">Trainers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#plans">Plans</a></li>
+           <li class="nav-item"><a class="nav-link" href="#tutorials">Tutorials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+ <!-- 🏋️‍♂️ Hero Carousel Section -->
+<section id="hero" class="hero-section">
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <img src="lifting.jpg" class="d-block w-100 hero-img" alt="Weight Training">
+        <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+          <h1>Transform Your Body. Transform Your Life.</h1>
+          <p>Join FitZone Gym — where fitness meets passion.</p>
+          <a href="#plans" class="btn-gradient mt-3">Join Now</a>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <img src="./group.webp" class="d-block w-100 hero-img" alt="Yoga & Flexibility">
+        <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+          <h1>Find Balance with Yoga</h1>
+          <p>Stretch, strengthen, and connect your mind and body.</p>
+          <a href="#plans" class="btn-gradient mt-3">Start Today</a>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <img src="cardio-to-gym-routine.webp" class="d-block w-100 hero-img" alt="Cardio & HIIT">
+        <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+          <h1>Push Your Limits</h1>
+          <p>Burn calories and boost endurance with HIIT training.</p>
+          <a href="#plans" class="btn-gradient mt-3">Get Started</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</section>
+
+
+  <!-- Programs Section -->
+  <section id="programs" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Our Programs</h2>
+      <div class="underline"></div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card slide-up">
+            <img src="./wt.jpeg" alt="Weight Training" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Weight Training</h5>
+              <p>Strengthen and sculpt your muscles with expert-guided sessions.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card slide-up">
+            <img src="./yog.webp" alt="Yoga" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Yoga & Flexibility</h5>
+              <p>Find your inner peace while improving flexibility and balance.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card slide-up">
+            <img src="./yoyo.jpeg" alt="Cardio" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Cardio & HIIT</h5>
+              <p>Push your limits with heart-pumping, fat-burning workouts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trainers Section -->
+  <section id="trainers" class="py-5 bg-dark">
+    <div class="container">
+      <h2 class="text-center mb-4">Meet Our Trainers</h2>
+      <div class="underline"></div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card slide-up">
+            <img src="./p2.jpg" class="card-img-top" alt="Trainer 1">
+            <div class="card-body text-center">
+              <h5 class="card-title">Prashant Chauhan</h5>
+              <p>Strength & Conditioning Coach</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card slide-up mx-auto">
+            <img src="./coach 2.jpg" class="card-img-top" alt="Trainer 2">
+            <div class="card-body text-center">
+              <h5 class="card-title">Sophie Lee</h5>
+              <p>Yoga & Mindfulness Expert</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card slide-up">
+            <img src="./c3.jpg" class="card-img-top" alt="Trainer 3">
+            <div class="card-body text-center">
+              <h5 class="card-title">Mark Davis</h5>
+              <p>HIIT & Cardio Specialist</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership Plans -->
+  <section id="plans">
+    <div class="container text-center">
+      <h2 class="mb-5">Membership Plans</h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-3">
+          <div class="pricing-card p-4">
+            <h4>Basic Plan</h4>
+            <p>₹999/month</p>
+            <ul class="list-unstyled">
+              <li>✔ Access to Gym</li>
+              <li>✔ Free WiFi</li>
+              <li>❌ Personal Trainer</li>
+            </ul>
+            <a href="#contact" class="btn btn-gradient mt-3">Join Now</a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="pricing-card p-4">
+            <h4>Pro Plan</h4>
+            <p>₹1499/month</p>
+            <ul class="list-unstyled">
+              <li>✔ All Basic Features</li>
+              <li>✔ Personal Trainer</li>
+              <li>✔ Nutrition Plan</li>
+            </ul>
+            <a href="#contact" class="btn btn-gradient mt-3">Join Now</a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="pricing-card p-4">
+            <h4>Elite Plan</h4>
+            <p>₹1999/month</p>
+            <ul class="list-unstyled">
+              <li>✔ 24/7 Access</li>
+              <li>✔ VIP Trainer</li>
+              <li>✔ Free Supplements</li>
+            </ul>
+            <a href="#contact" class="btn btn-gradient mt-3">Join Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Workout Tutorials Section -->
+<section id="tutorials" class="py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">Workout Tutorials</h2>
+    <div class="underline"></div>
+    <div class="row justify-content-center">
+      
+      <!-- Video Card 1 -->
+      <div class="col-md-5 mb-4 slide-up">
+        <div class="video-card">
+          <div class="video-wrapper">
+            
+             <video class="workout-video" autoplay muted loop playsinline poster="./lifting.jpg">
+              <source src="./project vd.mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+          </div>
+          <div class="video-info mt-3">
+            <h5>Upper Body Strength Routine</h5>
+            <p>Follow along this 10-minute strength and endurance workout.</p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="container">
+      <h2 class="text-center mb-5">What Our Members Say</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="testimonial slide-up">
+            <p>“FitZone completely changed my fitness game. The trainers are top-notch and motivating!”</p>
+            <h6>- Rahul Sharma</h6>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial slide-up">
+            <p>“Amazing equipment, friendly atmosphere, and great results. Highly recommend!”</p>
+            <h6>- Ananya Gupta</h6>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial slide-up">
+            <p>“The yoga and HIIT classes are my favorite! A perfect balance for body and mind.”</p>
+            <h6>- Mehul Jain</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-5">
+    <div class="container text-center">
+      <h2 class="mb-4">Get In Touch</h2>
+      <form class="mx-auto" style="max-width: 500px;">
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Your Name">
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Your Email">
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+        </div>
+        <button type="submit" class="btn-gradient">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 FitZone Gym | Designed with ❤️ by Prashant</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Slide-up Scroll Animation -->
+  <script>
+    const elements = document.querySelectorAll('.slide-up');
+    function checkScroll() {
+      elements.forEach(el => {
+        const pos = el.getBoundingClientRect().top;
+        if (pos < window.innerHeight - 50) {
+          el.classList.add('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', checkScroll);
+    checkScroll();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+ 
+  <script>
+  // Trainer Card Scroll Reveal with Staggered Animation
+  const trainerCards = document.querySelectorAll("#trainers .card");
+
+  function revealTrainers() {
+    trainerCards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        card.classList.add("reveal");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealTrainers);
+  revealTrainers();
+</script>
+<script>
+  document.querySelectorAll('.workout-video').forEach(video => {
+    // ensure video doesn't start playing unexpectedly
+    try { video.pause(); } catch(e) {}
+
+    // pointerenter works for mouse and stylus; better than mouseenter for some devices
+    video.addEventListener('pointerenter', () => {
+      // play (may be blocked by browser if not muted; keep videos muted by default if you want autoplay)
+      const p = video.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {/* autoplay blocked - ignore */});
+    });
+
+    // pointerleave -> pause and reset to start
+    video.addEventListener('pointerleave', () => {
+      try {
+        video.pause();
+        video.currentTime = 0; // reset to beginning
+      } catch (e) { /* ignore */ }
+    });
+
+    // Touch / click fallback: tap toggles play / stop (useful on mobile)
+    video.addEventListener('click', () => {
+      if (video.paused) {
+        video.play().catch(()=>{/* ignore */});
+      } else {
+        video.pause();
+        try { video.currentTime = 0; } catch(e) {}
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>
